@@ -3,6 +3,7 @@
 void main()
 {
     int adj[10][10], n, i, j, w, indeg[10], flag[10], count;
+
     printf("Enter the number of vertices\n");
     scanf("%d", &n);
     printf("Enter the adjacency matrix\n");
