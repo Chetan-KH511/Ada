@@ -47,15 +47,3 @@ int main() {
 	return 0;
 }
 
-/* Output:
-Time taken to sort 1000 elements: 0.001254 seconds
-Time taken to sort 2000 elements: 0.004847 seconds
-Time taken to sort 3000 elements: 0.010928 seconds
-Time taken to sort 4000 elements: 0.018940 seconds
-Time taken to sort 5000 elements: 0.029569 seconds
-Time taken to sort 6000 elements: 0.043208 seconds
-Time taken to sort 7000 elements: 0.056799 seconds
-Time taken to sort 8000 elements: 0.074002 seconds
-Time taken to sort 9000 elements: 0.093544 seconds
-Time taken to sort 10000 elements: 0.117264 seconds
-*/
