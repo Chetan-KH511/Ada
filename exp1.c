@@ -1,42 +1,58 @@
-#include<stdio.h>
-#include<conio.h>
-int parent[10];
-void main(){
-
-    int mincost=0, i, j,n, ne,cost[10][10],a, b,u,v,min;
-    printf("Enter the numner of vertics");
-    scanf("%d", &n);
-    printf("Enter the cost matrix");
-    for(i=1; i<=n; i++){
-        for(j=1; j<=n; j++){
-            scanf("%d", &cost[i][j]);
-            if(cost[i][j] == 0){
-                cost[i][j] = 9999;
+#include <stdio.h>;
+int cost[10][10];
+void krush(int n)
+{
+    int parent[10], i, j, ne = 0, min, mincost = 0, a, b, u, v;
+    for (i = 1; i <= n; i++)
+    {
+        parent[i] = 0;
+    }
+    while (ne != n - 1)
+    {
+        min = 999;
+        for (i = 1; i <= n; i++)
+        {
+            for (j = 1; j <= n; j++)
+            {
+                if (cost[i][j] < min)
+                {
+                    min = cost[i][j];
+                    a = i;
+                    u = i;
+                    b = j;
+                    v = j;
+                }
             }
         }
-    }
-    ne=1;
-    while(ne<n){
+        while (parent[u] != 0)
+            u = parent[u];
+        while (parent[v] != 0)
+            v = parent[v];
+        if (u != v)
+        {
+            printf("\nVertex(%d-->%d)=%d", a, b, min);
+            ne++;
+            parent[v] = u;
+            mincost = mincost + min;
+        }
 
-        for(min=9999, i=1;i<=n; i++){
-            for(j=1; j<=n; j++){
-                if(cost[i][j] < min){
-                    min=cost[i][j];
-a=u=i;
-b=v=j;
+        cost[a][b] = cost[b][a] = 999;
+    }
+    printf("\nCost of Spanning Tree is = %d\n", mincost);
 }
-while(parent[u])
-u=parent[u];
-while(parent[v])
-v=parent[v];
-if(v!=u)
+int main()
 {
-printf("%d edge(%d,%d)=%d\n",ne++,a,b,min);
-mincost+=min;
-parent[v]=u;
-}
-cost[a][b]=cost[b][a]=999;
-}
-printf("\nThe minimum cost of spanning tree is %d\n",mincost);
-getch();
+    int i, j, n;
+    printf("Enter the no of nodes\n");
+    scanf("%d", &n);
+    printf("Enter the matrix\n");
+    for (i = 1; i <= n; i++)
+    {
+        for (j = 1; j <= n; j++)
+        {
+            scanf("%d", &cost[i][j]);
+        }
+    }
+    krush(n);
+    return 0;
 }
